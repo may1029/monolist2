@@ -1,3 +1,4 @@
+# coding: utf-8
 class OwnershipsController < ApplicationController
   before_action :logged_in_user
 
@@ -11,6 +12,7 @@ class OwnershipsController < ApplicationController
     # itemsテーブルに存在しない場合は楽天のデータを登録する。
     if @item.new_record?
       # TODO 商品情報の取得 RakutenWebService::Ichiba::Item.search を用いてください
+      # @item = RaketenWebService::Ichiba::Item.search(keyword: params[:item_code])
       items = {}
 
       item                  = items.first
