@@ -1,3 +1,4 @@
+# coding: utf-8
 class User < ActiveRecord::Base
   before_save { self.email = email.downcase }
   validates :name, presence: true, length: { maximum: 50 }
@@ -14,6 +15,10 @@ class User < ActiveRecord::Base
 
   has_many :ownerships , foreign_key: "user_id", dependent: :destroy
   has_many :items ,through: :ownerships
+  has_many :wants, class_name: "Want", foreign_key: "user_id", dependent: :destroy
+  has_many :want_items , through: :wants, source: :item
+  has_many :haves, class_name: "Have", foreign_key: "user_id", dependent: :destroy
+  has_many :have_items , through: :haves, source: :item
 
 
   # 他のユーザーをフォローする
