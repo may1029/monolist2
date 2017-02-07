@@ -1,12 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <% if content_for?(:head) %>
-    <%= yield :head %>
-  <% else %>
-    <title>Monolist</title>
+  <% if false %>
+    <% if content_for?(:title) %>
+      <%= yield :title %>
+    <% else %>
+     <title>Monolist</title>
+    <% end %>
+    <title>
+      <%= content_for?(:title) ? yield(:title) : "default" %>
+    </title>
   <% end %>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <title><%= yield :title %></title>
+    <%= yield :description %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <%= favicon_link_tag 'favicon.ico' %>
