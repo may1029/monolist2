@@ -1,0 +1,13 @@
+<table class="type05">
+  <tr>
+    <th scope="row">人気アイテム名</th>
+    <td>Have数</td>
+  </tr>
+  <% @have_ranking.each do |item_id, count| %>
+    <tr>
+        <th scope="row"><%= Item.find_by(id: item_id).title %></th>
+        <td><%= count %> </td>
+    </tr>
+  <% end %>
+</table>
+
